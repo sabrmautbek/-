@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Жоский побор</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  </head>
+  <body>
+    <h1>Имена</h1>
+    <input type="text" id="letter-input" placeholder="Введите букву" />
+    <ul id="name-list"></ul>
+    <script>
+      const nameList = document.getElementById("name-list");
+      const letterInput = document.getElementById("letter-input");
+
+      // обработчик ввода буквы
+      letterInput.addEventListener("input", () => {
+        const letter = letterInput.value.trim().toLowerCase();
+
+        // очищаем список имен
+        nameList.innerHTML = "";
+
+        // если буква не задана  выходим из функции
+        if (letter === "") {
+          return;
+        }
+
+        // загружаем файл с именами
+        fetch("names.txt")
+          .then((response) => response.text())
+          .then((text) => {
+            // разбиваем текст на строки
+            const names = text.split("\n");
+
+            // фильтруем имеа  начинающиеся на заданную букву
+            const filteredNames = names.filter((name) =>
+              name.trim().toLowerCase().startsWith(letter)
+            );
+
+            // добавляем фильтрованные имена в список
+            filteredNames.forEach((name) => {
+              const li = document.createElement("li");
+              li.textContent = name;
+              nameList.appendChild(li);
+            });
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      });
+    </script>
+  </body>
+</html>
