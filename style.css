@@ -1,0 +1,33 @@
+body {
+  background-color: #1c1f3e;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  color: #ffc107;
+}
+
+input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+  color: #1c1f3e;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  padding: 10px;
+  font-size: 18px;
+  background-color: #ffc107;
+  color: #1c1f3e;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
